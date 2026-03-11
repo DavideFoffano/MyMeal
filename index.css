@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --bg: #F5F3EF;
+  --surface: #FFFFFF;
+  --surface2: #FAF9F6;
+  --border: #E8E4DC;
+  --text: #2C2A27;
+  --text-soft: #7A7570;
+  --accent-col: #E8A87C;
+  --accent-prot: #85C1AE;
+  --accent-carb: #F0C987;
+  --accent-fat: #C9A9D4;
+  --accent-fiber: #A8C8A0;
+  --meal-col: #FFF0E6;
+  --meal-pran: #E8F5F0;
+  --meal-cena: #F0EBF8;
+  --danger: #E07070;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.09);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 36px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+
+/* Animations */
+@keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform:none; } }
+@keyframes dropIn { from { opacity:0; transform: translateY(-6px); } to { opacity:1; transform:none; } }
+@keyframes toastIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
+@keyframes toastOut { to { opacity:0; transform: translateY(10px); } }
+
+.animate-fadeIn { animation: fadeIn 0.3s ease; }
+.animate-dropIn { animation: dropIn 0.18s ease; }
+.animate-toast { animation: toastIn 0.25s ease, toastOut 0.3s ease 1.8s forwards; }
+
+.vit-extra {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s;
+  opacity: 0;
+}
+.vit-extra.open { max-height: 600px; opacity: 1; }
+
+.meal-body {
+  transition: max-height 0.3s ease-in-out;
+}
+
+.meal-section.collapsed .meal-body {
+  display: none;
+}
+
+.progress-bar-fill {
+  transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.wdr-bar {
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
